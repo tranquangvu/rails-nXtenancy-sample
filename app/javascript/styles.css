@@ -1,0 +1,77 @@
+:root {
+  --form-element-spacing-vertical: 0.375rem;
+  --form-element-spacing-horizontal: 0.75rem;
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --font-size: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --font-size: 1rem;
+  }
+}
+
+@media (min-width: 576px) {
+  :root {
+    --font-size: 1rem;
+  }
+}
+
+h1 {
+  --font-size: 2rem;
+  --typography-spacing-vertical: 1rem;
+}
+
+h2 {
+  --font-size: 1.75rem;
+  --typography-spacing-vertical: 1rem;
+}
+
+h3 {
+  --font-size: 1.5rem;
+  --typography-spacing-vertical: 1rem;
+}
+
+h4 {
+  --font-size: 1.25rem;
+  --typography-spacing-vertical: 1rem;
+}
+
+h5 {
+  --font-size: 1.125rem;
+  --typography-spacing-vertical: 1rem;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-none {
+  float: none;
+}
+
+.flash {
+  padding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing);
+  background: var(--mark-background-color);
+  color: var(--primary);
+}
+
+.flash-container {
+  margin-bottom: var(--spacing);
+}

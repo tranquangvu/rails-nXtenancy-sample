@@ -1,0 +1,51 @@
+<%= form_with(model: tenant) do |form| %>
+  <% if tenant.errors.any? %>
+    <div style="color: red">
+      <strong>Please check erors detail below:</strong>
+      <ul>
+        <% tenant.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :subdomain %>
+    <%= form.text_field :subdomain %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shard %>
+    <%= form.text_field :shard %>
+  </div>
+
+  <h6 style="margin-bottom: var(--spacing);">Database Connections</h6>
+
+  <div class="grid">
+    <div class="field">
+      <%= form.label :dbc_host, 'Host' %>
+      <%= form.text_field :dbc_host %>
+    </div>
+    <div class="field">
+      <%= form.label :dbc_port, 'Port' %>
+      <%= form.number_field :dbc_port %>
+    </div>
+    <div class="field">
+      <%= form.label :dbc_username, 'Username' %>
+      <%= form.text_field :dbc_username %>
+    </div>
+    <div class="field">
+      <%= form.label :dbc_password, 'Password' %>
+      <%= form.text_field :dbc_password %>
+    </div>
+    <div class="field">
+      <%= form.label :dbc_database, 'DBName' %>
+      <%= form.text_field :dbc_database %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

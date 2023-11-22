@@ -1,0 +1,16 @@
+<div id="<%= dom_id(@post) %>">
+  <h1><%= @post.title %></h1>
+  <p><%= @post.content %></p>
+</div>
+
+<div class="grid">
+  <div>
+    <%= link_to "Edit this post", edit_post_path(@post), role: 'button', style: "width: 100%;" %>
+  </div>
+  <div>
+    <%= link_to "Back to posts", posts_path, role: 'button', style: "width: 100%;" %>
+  </div>
+  <div>
+    <%= button_to "Destroy this post", @post, method: :delete %>
+  </div>
+</div>

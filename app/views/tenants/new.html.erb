@@ -1,0 +1,5 @@
+<%= render "shared/navlink", items: { 'Home': root_path, 'Tenants': tenants_path, 'Add': '#' } %>
+
+<h1>New tenant</h1>
+
+<%= render "form", tenant: @tenant %>

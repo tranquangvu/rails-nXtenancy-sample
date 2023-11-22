@@ -1,0 +1,5 @@
+<%= render "shared/navlink", items: { 'Home': root_path, 'Tenants': tenants_path, "Editing ##{@tenant.subdomain}": '#' } %>
+
+<h1>Editing tenant</h1>
+
+<%= render "form", tenant: @tenant %>

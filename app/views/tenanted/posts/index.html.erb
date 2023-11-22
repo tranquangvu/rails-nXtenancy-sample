@@ -1,0 +1,21 @@
+<div class="grid">
+  <div>
+    <h1>Posts</h1>
+  </div>
+  <div>
+    <%= link_to "New post", new_post_path, role: "button", style: "float: right;" %>
+  </div>
+</div>
+
+<hr style="margin-top: 1rem; margin-bottom: 1.5rem;">
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <div id="<%= dom_id(post) %>">
+      <h6 style="margin-bottom: 0.5rem;"><%= post.title %></h6>
+      <p style="margin-bottom: 0.5rem;"><%= truncate(post.content, length: 120) %></p>
+      <%= link_to "Show this post", post %>
+    </div>
+    <hr style="margin-top: 1rem; margin-bottom: 1rem;">
+  <% end %>
+</div>
