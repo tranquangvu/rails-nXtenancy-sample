@@ -1,5 +1,5 @@
-class CentralRecord < ActiveRecord::Base
-  primary_abstract_class
+class CentralRecord < ApplicationRecord
+  self.abstract_class = true
 
   connects_to database: { writing: :primary, reading: :primary }
 end

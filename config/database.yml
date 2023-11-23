@@ -4,10 +4,9 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  primary:
-    <<: *default
-    database: central_meme
-    schema_dump: schema.sql # rails 7 only
+  <<: *default
+  database: central_meme
+  schema_dump: schema.sql # rails 7 only
 
 test:
   <<: *default
