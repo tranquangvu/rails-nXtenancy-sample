@@ -1,22 +1,22 @@
 class Tenant < CentralRecord
-  store_accessor :dbc, :adapter, :encoding, :host, :port, :username, :password, :database, :pool, prefix: true
+  store_accessor :dbc, :adapter, :encoding, :host, :port,
+                 :username, :password, :database, :pool, prefix: true
 
+  # validations
+  validates_presence_of :dbc_adapter, :dbc_encoding, :dbc_host, :dbc_port, :dbc_username, :dbc_database, :dbc_pool
   validates :subdomain, presence: true, uniqueness: { case_sensitive: false }
   validates :shard, presence: true, uniqueness: { case_sensitive: false }
-  validates :dbc_host, presence: true
-  validates :dbc_port, presence: true
-  validates :dbc_username, presence: true
-  validates :dbc_database, presence: true
-  validates :dbc_pool, presence: true
 
-  before_validation :correct_dbc_values
+  # callbacks
+  after_save :setup_new_database_connection
 
-  private
+  def db_config
+    conf_hash = dbc.merge({ migrations_paths: 'db/tenant_migrate', schema_dump: 'tenant_structure.sql' })
+    ActiveRecord::DatabaseConfigurations::HashConfig.new(Rails.env, shard, conf_hash)
+  end
 
-  def correct_dbc_values
-    self.dbc_adapter = 'postgresql'
-    self.dbc_encoding = 'unicode'
-    self.dbc_port = dbc_port.presence&.to_i || 5432
-    self.dbc_pool = 5
+  def register_database_configurations
+    db_configs = ActiveRecord::Base.configurations
+    db_configs.configurations << db_config
   end
 end

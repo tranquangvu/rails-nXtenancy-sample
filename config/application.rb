@@ -27,10 +27,6 @@ module Central
     # Set schema format to sql
     config.active_record.schema_format = :sql
 
-    # Autoload libs
-    config.autoload_paths << Rails.root.join('lib')
-    config.eager_load_paths << Rails.root.join('lib')
-
     # Override module
     overrides = "#{Rails.root}/app/overrides"
     Rails.autoloaders.main.ignore(overrides)

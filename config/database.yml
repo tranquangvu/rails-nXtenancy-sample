@@ -5,9 +5,16 @@ default: &default
 
 development:
   <<: *default
+  host: localhost
+  port: 5432
   database: central_meme
-  schema_dump: schema.sql # rails 7 only
+  username: postgres
+  password:
 
 test:
   <<: *default
+  host: localhost
+  port: 5432
   database: central_meme_test
+  username: postgres
+  password:

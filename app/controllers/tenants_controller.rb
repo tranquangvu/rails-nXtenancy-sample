@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController
-  before_action :set_tenant, only: %i[show edit update destroy]
+  before_action :set_tenant, only: %i[edit update destroy]
 
   # GET /tenants
   def index
@@ -16,8 +16,13 @@ class TenantsController < ApplicationController
 
   # POST /tenants
   def create
-    @tenant = Tenant.new(tenant_params)
-
+    @tenant = Tenant.new(
+      tenant_params.merge(
+        dbc_adapter: 'postgresql',
+        dbc_encoding: 'unicode',
+        dbc_pool: 5
+      )
+    )
     if @tenant.save
       redirect_to tenants_path, notice: 'Tenant was successfully created.'
     else
