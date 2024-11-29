@@ -7,9 +7,6 @@ class Tenant < CentralRecord
   validates :subdomain, presence: true, uniqueness: { case_sensitive: false }
   validates :shard, presence: true, uniqueness: { case_sensitive: false }
 
-  # callbacks
-  after_save :setup_new_database_connection
-
   def db_config
     conf_hash = dbc.merge({ migrations_paths: 'db/tenant_migrate', schema_dump: 'tenant_structure.sql' })
     ActiveRecord::DatabaseConfigurations::HashConfig.new(Rails.env, shard, conf_hash)
